@@ -1,4 +1,4 @@
 export enum PostValueEnum {
-  ID = 'id',
+  USER_ID = 'userId',
   TITLE = 'title',
 }

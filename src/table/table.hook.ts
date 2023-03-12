@@ -24,17 +24,17 @@ export const useTable = (): [PostInterface[], <T extends string>(value: T) => ()
       onSortChange(value, newSort);
 
       setData(prev => {
-        const items = [...prev];
-        let sortedItems = items;
+        let items = [...prev];
 
-        if (value === PostValueEnum.ID) {
-          sortedItems = items.sort((a, b) => a.userId - b.userId);
+        if (value === PostValueEnum.USER_ID) {
+          items = items.sort((a, b) => a.userId - b.userId);
         }
 
         if (value === PostValueEnum.TITLE) {
-          sortedItems = items.sort((a, b) => {
+          items = items.sort((a, b) => {
             const titleA = a.title.toUpperCase();
             const titleB = b.title.toUpperCase();
+
             if (titleA < titleB) {
               return -1;
             }
@@ -46,7 +46,7 @@ export const useTable = (): [PostInterface[], <T extends string>(value: T) => ()
           });
         }
 
-        return isDesc ? sortedItems.reverse() : sortedItems;
+        return isDesc ? items.reverse() : items;
       });
     };
 
